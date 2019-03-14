@@ -1,13 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 21
-    buildToolsVersion "21.0.0"
+    compileSdkVersion 28
 
     defaultConfig {
         minSdkVersion 17
-        targetSdkVersion 21
+        useLibrary 'org.apache.http.legacy'
+        targetSdkVersion 28
         versionCode 1
+        multiDexEnabled = true
         versionName "1.0"
     }
     buildTypes {
@@ -25,8 +26,10 @@ repositories {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.pubnub:pubnub-android:3.7.4'
-    compile 'io.pristine:libjingle:9694@aar'
-    compile project(':pnwebrtc')
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.pubnub:pubnub-android:3.7.4'
+    implementation 'io.pristine:libjingle:9694@aar'
+    implementation 'com.android.support:multidex:1.0.3'
+    implementation 'org.jbundle.util.osgi.wrapped:org.jbundle.util.osgi.wrapped.org.apache.http.client:4.1.2'
+    implementation project(':pnwebrtc')
 }
